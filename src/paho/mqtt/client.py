@@ -1910,6 +1910,13 @@ class Client(object):
                         if self._sock:
                             self._sock.close()
                             self._sock = None
+                        if self._sockpairR:
+                            self._sockpairR.close()
+                            self._sockpairR = None
+                        if self._sockpairW:
+                            self._sockpairW.close()
+                            self._sockpairW = None
+                            
                         return MQTT_ERR_SUCCESS
 
                     with self._out_packet_mutex:
